@@ -1,0 +1,542 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "email": "customer@demo.com",
+      "name": "Alex Chen",
+      "role": "customer",
+      "password": "demo",
+      "ownedShipments": [
+        "shp-001",
+        "shp-002"
+      ]
+    },
+    {
+      "id": "u2",
+      "email": "shipper@demo.com",
+      "name": "Maria Santos",
+      "role": "shipper",
+      "password": "demo",
+      "ownedShipments": [
+        "shp-001",
+        "shp-002",
+        "shp-003",
+        "shp-004",
+        "shp-005"
+      ]
+    },
+    {
+      "id": "u3",
+      "email": "ops@demo.com",
+      "name": "James Wright",
+      "role": "ops",
+      "password": "demo",
+      "ownedShipments": []
+    }
+  ],
+  "carriers": [
+    {
+      "id": "fedex",
+      "name": "FedEx",
+      "logo": "🟣",
+      "color": "#4D148C"
+    },
+    {
+      "id": "ups",
+      "name": "UPS",
+      "logo": "🟤",
+      "color": "#351C15"
+    },
+    {
+      "id": "dhl",
+      "name": "DHL",
+      "logo": "🟡",
+      "color": "#FFCC00"
+    },
+    {
+      "id": "maersk",
+      "name": "Maersk",
+      "logo": "🔵",
+      "color": "#003DA5"
+    },
+    {
+      "id": "iot",
+      "name": "IoT Direct",
+      "logo": "📡",
+      "color": "#00C7B7"
+    }
+  ],
+  "notificationPrefs": [
+    [
+      "u1",
+      {
+        "email": true,
+        "sms": true,
+        "push": false,
+        "milestones": [
+          "pickup",
+          "out_for_delivery",
+          "delivered",
+          "exception"
+        ]
+      }
+    ],
+    [
+      "u2",
+      {
+        "email": true,
+        "sms": false,
+        "push": true,
+        "milestones": [
+          "pickup",
+          "delayed",
+          "out_for_delivery",
+          "delivered",
+          "exception",
+          "awaiting_customs"
+        ]
+      }
+    ],
+    [
+      "u3",
+      {
+        "email": true,
+        "sms": true,
+        "push": true,
+        "milestones": [
+          "delayed",
+          "exception",
+          "awaiting_customs"
+        ]
+      }
+    ]
+  ],
+  "notificationLog": [],
+  "shipments": [
+    {
+      "id": "shp-002",
+      "trackingNumber": "TRK-002",
+      "carrier": "ups",
+      "carrierTrackingId": "UP1Z999AA10123456784",
+      "status": "delayed",
+      "description": "Apparel — Winter Collection",
+      "origin": {
+        "name": "New York, NY",
+        "lat": 40.7128,
+        "lng": -74.006
+      },
+      "destination": {
+        "name": "Yonkers, NY",
+        "lat": 40.9312,
+        "lng": -73.8988
+      },
+      "currentPosition": {
+        "lat": 40.7831,
+        "lng": -73.9712
+      },
+      "routeWaypoints": [
+        [
+          40.7128,
+          -74.006
+        ],
+        [
+          40.7488,
+          -73.968
+        ],
+        [
+          40.7831,
+          -73.9712
+        ],
+        [
+          40.8448,
+          -73.8648
+        ],
+        [
+          40.8955,
+          -73.8523
+        ],
+        [
+          40.9176,
+          -73.8421
+        ]
+      ],
+      "currentWaypointIndex": 2,
+      "estimatedDelivery": "2026-03-12T03:02:51.516Z",
+      "weight": "5.4 kg",
+      "dimensions": "60×40×30 cm",
+      "service": "UPS Ground",
+      "events": [
+        {
+          "id": "cb5d304b-27a4-438c-9379-8eec7bada2d5",
+          "timestamp": "2026-03-10T21:02:51.516Z",
+          "status": "in_transit",
+          "location": "New York, NY",
+          "description": "Package received",
+          "rawCode": "M"
+        },
+        {
+          "id": "9ec0792a-cd0c-4d61-95ef-7b168f220086",
+          "timestamp": "2026-03-11T02:02:51.516Z",
+          "status": "in_transit",
+          "location": "Newark Hub, NJ",
+          "description": "Processing at facility",
+          "rawCode": "I"
+        },
+        {
+          "id": "3e901dfb-69c9-4326-b44c-ac9add8fb527",
+          "timestamp": "2026-03-11T09:02:51.516Z",
+          "status": "delayed",
+          "location": "Bronx Hub, NY",
+          "description": "Delay — severe weather conditions",
+          "rawCode": "X"
+        },
+        {
+          "id": "5e096fc9-5eaf-471a-9803-a725828e03c9",
+          "timestamp": "2026-03-11T14:02:51.516Z",
+          "status": "delayed",
+          "location": "Bronx Hub, NY",
+          "description": "Package rescheduled",
+          "rawCode": "RS"
+        }
+      ],
+      "ownedBy": [
+        "u1",
+        "u2",
+        "u3"
+      ],
+      "onTime": false,
+      "delayMinutes": 180,
+      "traffic": "heavy",
+      "weather": "snow"
+    },
+    {
+      "id": "shp-003",
+      "trackingNumber": "TRK-003",
+      "carrier": "dhl",
+      "carrierTrackingId": "DHL1234567890",
+      "status": "awaiting_customs",
+      "description": "Industrial Equipment",
+      "origin": {
+        "name": "London, UK",
+        "lat": 51.5074,
+        "lng": -0.1278
+      },
+      "destination": {
+        "name": "Tilbury Port, UK",
+        "lat": 51.4639,
+        "lng": 0.3575
+      },
+      "currentPosition": {
+        "lat": 51.5247,
+        "lng": -0.0546
+      },
+      "routeWaypoints": [
+        [
+          51.5074,
+          -0.1278
+        ],
+        [
+          51.5155,
+          -0.0922
+        ],
+        [
+          51.5247,
+          -0.0546
+        ],
+        [
+          51.54,
+          -0.01
+        ],
+        [
+          51.556,
+          0.0302
+        ],
+        [
+          51.5788,
+          0.0843
+        ]
+      ],
+      "currentWaypointIndex": 2,
+      "estimatedDelivery": "2026-03-13T17:02:51.516Z",
+      "weight": "120 kg",
+      "dimensions": "100×80×60 cm",
+      "service": "DHL Express Worldwide",
+      "events": [
+        {
+          "id": "57959cd4-fd4b-48af-aa94-1eed69a57ddd",
+          "timestamp": "2026-03-10T11:02:51.516Z",
+          "status": "in_transit",
+          "location": "Heathrow Hub, UK",
+          "description": "Shipment collected",
+          "rawCode": "PU"
+        },
+        {
+          "id": "46709ad2-0fea-46a3-a0b6-b4a1da2e6ff3",
+          "timestamp": "2026-03-10T17:02:51.516Z",
+          "status": "in_transit",
+          "location": "Heathrow Hub, UK",
+          "description": "Customs documents submitted",
+          "rawCode": "CI"
+        },
+        {
+          "id": "5e2f0903-4cfd-45c1-abf0-813879d6823b",
+          "timestamp": "2026-03-11T05:02:51.516Z",
+          "status": "awaiting_customs",
+          "location": "Tilbury Port, UK",
+          "description": "Held for customs inspection",
+          "rawCode": "CH"
+        }
+      ],
+      "ownedBy": [
+        "u2",
+        "u3"
+      ],
+      "onTime": false,
+      "delayMinutes": 720,
+      "traffic": "light",
+      "weather": "rain"
+    },
+    {
+      "id": "shp-004",
+      "trackingNumber": "TRK-004",
+      "carrier": "maersk",
+      "carrierTrackingId": "MSK-CTR-883921",
+      "status": "delivered",
+      "description": "Container — Mixed Goods",
+      "origin": {
+        "name": "Paris, France",
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
+      "destination": {
+        "name": "Brussels, Belgium",
+        "lat": 50.8503,
+        "lng": 4.3517
+      },
+      "currentPosition": {
+        "lat": 48.909483175871294,
+        "lng": 2.588191115549558
+      },
+      "routeWaypoints": [
+        [
+          48.8566,
+          2.3522
+        ],
+        [
+          48.86,
+          2.4
+        ],
+        [
+          48.87,
+          2.45
+        ],
+        [
+          48.89,
+          2.52
+        ],
+        [
+          48.91,
+          2.59
+        ]
+      ],
+      "currentWaypointIndex": 3,
+      "estimatedDelivery": "2026-03-11T21:33:50.538Z",
+      "weight": "2400 kg",
+      "dimensions": "600×240×260 cm",
+      "service": "Maersk Road Freight",
+      "events": [
+        {
+          "id": "11dee727-31eb-4e98-9fcb-a6d8a3c41381",
+          "timestamp": "2026-03-11T07:02:51.516Z",
+          "status": "in_transit",
+          "location": "Paris, France",
+          "description": "Container loaded and departed",
+          "rawCode": "DEP"
+        },
+        {
+          "id": "9e4ebd46-88e1-4b7d-93f7-3fb002a39e09",
+          "timestamp": "2026-03-11T11:02:51.516Z",
+          "status": "in_transit",
+          "location": "Aachen, Germany",
+          "description": "In transit — on schedule",
+          "rawCode": "TRN"
+        },
+        {
+          "id": "47c29f28-25bd-4427-96c6-cbf80327082c",
+          "timestamp": "2026-03-11T17:07:39.629Z",
+          "status": "delivered",
+          "rawCode": "DL",
+          "carrier": "maersk",
+          "location": "Brussels, Belgium",
+          "description": "Successfully delivered to recipient",
+          "rawPayload": {
+            "code": "DL",
+            "description": "Successfully delivered to recipient",
+            "location": "Brussels, Belgium",
+            "timestamp": "2026-03-11T17:07:39.629Z"
+          }
+        }
+      ],
+      "ownedBy": [
+        "u2",
+        "u3"
+      ],
+      "onTime": true,
+      "delayMinutes": 0,
+      "traffic": "clear",
+      "weather": "cloudy",
+      "updatedAt": "2026-03-11T17:07:39.633Z",
+      "remainingKm": 261
+    },
+    {
+      "id": "shp-005",
+      "trackingNumber": "TRK-005",
+      "carrier": "fedex",
+      "carrierTrackingId": "FX7781001234",
+      "status": "exception",
+      "description": "Pharmaceuticals — Cold Chain",
+      "origin": {
+        "name": "Tokyo, Japan",
+        "lat": 35.6762,
+        "lng": 139.6503
+      },
+      "destination": {
+        "name": "Narita, Japan",
+        "lat": 35.772,
+        "lng": 140.3929
+      },
+      "currentPosition": {
+        "lat": 35.71,
+        "lng": 139.76
+      },
+      "routeWaypoints": [
+        [
+          35.6762,
+          139.6503
+        ],
+        [
+          35.69,
+          139.71
+        ],
+        [
+          35.71,
+          139.76
+        ],
+        [
+          35.72,
+          139.79
+        ]
+      ],
+      "currentWaypointIndex": 2,
+      "estimatedDelivery": "2026-03-12T23:02:51.516Z",
+      "weight": "8.2 kg",
+      "dimensions": "40×30×30 cm",
+      "service": "FedEx International Priority",
+      "events": [
+        {
+          "id": "9cd252ef-6fac-462e-85a0-98df2a39f641",
+          "timestamp": "2026-03-10T23:02:51.516Z",
+          "status": "in_transit",
+          "location": "Tokyo Hub, Japan",
+          "description": "Package collected at origin",
+          "rawCode": "OC"
+        },
+        {
+          "id": "8e01a76a-831e-4a36-a44c-6a2b0f8d3679",
+          "timestamp": "2026-03-11T05:02:51.516Z",
+          "status": "in_transit",
+          "location": "Tokyo Hub, Japan",
+          "description": "Loaded on vehicle",
+          "rawCode": "AR"
+        },
+        {
+          "id": "b670dd46-b90c-40ff-adae-5e8b45315e89",
+          "timestamp": "2026-03-11T13:02:51.516Z",
+          "status": "exception",
+          "location": "Chiba, Japan",
+          "description": "Exception — temperature excursion detected",
+          "rawCode": "EX"
+        }
+      ],
+      "ownedBy": [
+        "u2",
+        "u3"
+      ],
+      "onTime": false,
+      "delayMinutes": 120,
+      "traffic": "moderate",
+      "weather": "clear"
+    },
+    {
+      "id": "shp-1773296043441",
+      "trackingNumber": "1234567",
+      "carrier": "fedex",
+      "carrierTrackingId": "1234567",
+      "status": "delivered",
+      "description": "sdfg",
+      "origin": {
+        "name": "hosur",
+        "lat": 40.7128,
+        "lng": -74.006
+      },
+      "destination": {
+        "name": "bng",
+        "lat": 51.5074,
+        "lng": -0.1278
+      },
+      "currentPosition": {
+        "lat": 51.50712819300647,
+        "lng": -0.12966024599605505
+      },
+      "routeWaypoints": [
+        [
+          40.7128,
+          -74.006
+        ],
+        [
+          51.5074,
+          -0.1278
+        ]
+      ],
+      "currentWaypointIndex": 0,
+      "estimatedDelivery": "2026-03-25T00:46:47.481Z",
+      "weight": "1",
+      "dimensions": "5x5",
+      "service": "Standard",
+      "events": [
+        {
+          "id": "ec9dfe63-2b5f-4a55-9b10-3f62fbc569af",
+          "timestamp": "2026-03-12T06:14:03.441Z",
+          "status": "in_transit",
+          "location": "hosur",
+          "description": "Shipment created",
+          "rawCode": "CR"
+        },
+        {
+          "id": "10ebc6e3-3e6d-490d-961d-9523827733f4",
+          "timestamp": "2026-03-12T06:25:14.648Z",
+          "status": "delivered",
+          "rawCode": "DL",
+          "carrier": "fedex",
+          "location": "bng",
+          "description": "Successfully delivered to recipient",
+          "rawPayload": {
+            "code": "DL",
+            "description": "Successfully delivered to recipient",
+            "location": "bng",
+            "timestamp": "2026-03-12T06:25:14.648Z"
+          }
+        }
+      ],
+      "ownedBy": [
+        "u2"
+      ],
+      "onTime": true,
+      "delayMinutes": 0,
+      "traffic": "heavy",
+      "weather": "rain",
+      "updatedAt": "2026-03-12T06:25:14.652Z",
+      "remainingKm": 11140
+    }
+  ]
+}

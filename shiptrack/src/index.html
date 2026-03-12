@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShipTrack — Real-Time Shipment Visibility Platform</title>
+  <meta name="description" content="Unified, modern shipment tracking with live GPS, multi-carrier integration, and proactive alerts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <!-- App Shell -->
+  <div id="app-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar hidden">
+      <div class="sidebar-logo">
+        <span class="logo-icon">📦</span>
+        <span class="logo-text">ShipTrack</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#/shipments"  class="nav-item" data-page="shipments">
+          <span class="nav-icon">🚚</span><span>Shipments</span>
+        </a>
+        <a href="#/analytics" class="nav-item nav-ops nav-shipper" data-page="analytics">
+          <span class="nav-icon">📊</span><span>Analytics</span>
+        </a>
+        <a href="#/notifications" class="nav-item" data-page="notifications">
+          <span class="nav-icon">🔔</span><span>Alerts</span>
+        </a>
+        <a href="#/profile" class="nav-item nav-customer" data-page="profile">
+          <span class="nav-icon">👤</span><span>Profile</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-chip" id="user-chip"></div>
+        <button class="btn-logout" id="btn-logout">Sign out</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <button class="btn-theme btn-theme-floating" id="btn-theme">☀️ Light Mode</button>
+      <div id="app"></div>
+    </main>
+  </div>
+
+  <!-- Live status indicator -->
+  <div id="ws-indicator" class="ws-indicator">
+    <span class="ws-dot"></span><span class="ws-label">Live</span>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
