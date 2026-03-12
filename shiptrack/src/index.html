@@ -45,7 +45,27 @@
       <button class="btn-theme btn-theme-floating" id="btn-theme">☀️ Light Mode</button>
       <div id="app"></div>
     </main>
+    </main>
   </div>
+
+  <!-- Mobile Navigation -->
+  <nav id="mobile-nav" class="mobile-nav hidden">
+    <a href="#/shipments" class="nav-item mobile-nav-item" data-page="shipments">
+      <span class="nav-icon">🚚</span><span class="nav-label">Shipments</span>
+    </a>
+    <a href="#/analytics" class="nav-item mobile-nav-item nav-ops nav-shipper" data-page="analytics">
+      <span class="nav-icon">📊</span><span class="nav-label">Analytics</span>
+    </a>
+    <a href="#/notifications" class="nav-item mobile-nav-item" data-page="notifications">
+      <span class="nav-icon">🔔</span><span class="nav-label">Alerts</span>
+    </a>
+    <a href="#/profile" class="nav-item mobile-nav-item nav-customer" data-page="profile">
+      <span class="nav-icon">👤</span><span class="nav-label">Profile</span>
+    </a>
+    <button class="mobile-nav-item btn-logout" id="btn-logout-mobile">
+      <span class="nav-icon">🚪</span><span class="nav-label">Log out</span>
+    </button>
+  </nav>
 
   <!-- Live status indicator -->
   <div id="ws-indicator" class="ws-indicator">

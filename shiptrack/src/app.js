@@ -63,16 +63,19 @@ function connectWs() {
 // ── Navigation ─────────────────────────────────────────────────────────────
 function updateSidebar() {
   const sidebar = document.getElementById('sidebar');
+  const mobileNav = document.getElementById('mobile-nav');
   const userChip = document.getElementById('user-chip');
   const main = document.getElementById('main-content');
 
   if (!currentUser) {
     sidebar.classList.add('hidden');
+    if (mobileNav) mobileNav.classList.add('hidden');
     main.classList.add('full-width');
     return;
   }
 
   sidebar.classList.remove('hidden');
+  if (mobileNav) mobileNav.classList.remove('hidden');
   main.classList.remove('full-width');
 
   // Render user chip
@@ -85,9 +88,9 @@ function updateSidebar() {
     </div>`;
 
   // Role-based nav visibility
-  const opsItems = sidebar.querySelectorAll('.nav-ops');
-  const shipperItems = sidebar.querySelectorAll('.nav-shipper');
-  const customerItems = sidebar.querySelectorAll('.nav-customer');
+  const opsItems = document.querySelectorAll('.nav-ops');
+  const shipperItems = document.querySelectorAll('.nav-shipper');
+  const customerItems = document.querySelectorAll('.nav-customer');
   opsItems.forEach(el => el.style.display = currentUser.role === 'ops' ? '' : 'none');
   shipperItems.forEach(el => el.style.display = ['ops', 'shipper'].includes(currentUser.role) ? '' : 'none');
   customerItems.forEach(el => el.style.display = currentUser.role === 'customer' ? '' : 'none');
@@ -107,6 +110,8 @@ async function router() {
   // Public tracking — no auth needed
   if (hash.startsWith('#/track/')) {
     document.getElementById('sidebar').classList.add('hidden');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileNav) mobileNav.classList.add('hidden');
     document.getElementById('main-content').classList.add('full-width');
     const tn = hash.replace('#/track/', '');
     app.innerHTML = '';
@@ -182,6 +187,13 @@ if (themeBtn) themeBtn.innerHTML = storedTheme === 'light' ? '🌙 Dark Mode' : 
 
 
 document.getElementById('btn-logout')?.addEventListener('click', () => {
+  clearUser();
+  if (ws) ws.close();
+  location.hash = '#/';
+  router();
+});
+
+document.getElementById('btn-logout-mobile')?.addEventListener('click', () => {
   clearUser();
   if (ws) ws.close();
   location.hash = '#/';

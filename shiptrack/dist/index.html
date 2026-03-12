@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script type="module" crossorigin src="/assets/index-BqcZvAjt.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-D_HBuRa2.css">
+  <script type="module" crossorigin src="/assets/index-CvHzP2Vy.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B-2bxvCa.css">
 </head>
 <body>
   <!-- App Shell -->
@@ -46,7 +46,27 @@
       <button class="btn-theme btn-theme-floating" id="btn-theme">☀️ Light Mode</button>
       <div id="app"></div>
     </main>
+    </main>
   </div>
+
+  <!-- Mobile Navigation -->
+  <nav id="mobile-nav" class="mobile-nav hidden">
+    <a href="#/shipments" class="nav-item mobile-nav-item" data-page="shipments">
+      <span class="nav-icon">🚚</span><span class="nav-label">Shipments</span>
+    </a>
+    <a href="#/analytics" class="nav-item mobile-nav-item nav-ops nav-shipper" data-page="analytics">
+      <span class="nav-icon">📊</span><span class="nav-label">Analytics</span>
+    </a>
+    <a href="#/notifications" class="nav-item mobile-nav-item" data-page="notifications">
+      <span class="nav-icon">🔔</span><span class="nav-label">Alerts</span>
+    </a>
+    <a href="#/profile" class="nav-item mobile-nav-item nav-customer" data-page="profile">
+      <span class="nav-icon">👤</span><span class="nav-label">Profile</span>
+    </a>
+    <button class="mobile-nav-item btn-logout" id="btn-logout-mobile">
+      <span class="nav-icon">🚪</span><span class="nav-label">Log out</span>
+    </button>
+  </nav>
 
   <!-- Live status indicator -->
   <div id="ws-indicator" class="ws-indicator">
