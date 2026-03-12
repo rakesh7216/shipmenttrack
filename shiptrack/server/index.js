@@ -56,12 +56,27 @@ app.post('/api/webhooks/:carrier/:shipmentId', async (req, res) => {
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', uptime: process.uptime() }));
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// ── Provide Static Files (Render / Production) ─────────────────────────────────
+app.use(express.static(path.join(__dirname, '../dist')));
+
 // ── WebSocket ──────────────────────────────────────────────────────────────────
 initWebSocket(server);
 
+// ── Fallback ───────────────────────────────────────────────────────────────────
+// For client-side routing, serve index.html for unknown routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 // ── Start ──────────────────────────────────────────────────────────────────────
-const PORT = 3001;
-server.listen(PORT, () => {
-  console.log(`🚀 ShipTrack API running on http://localhost:${PORT}`);
+const PORT = process.env.PORT || 3001;
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 ShipTrack API running on port ${PORT}`);
   startMockCarrierStream();
 });
