@@ -879,7 +879,7 @@ a { text-decoration: none; color: inherit; }
 /* ── Chatbot ─────────────────────────────────────────────────────────────── */
 #chatbot-container {
   position: fixed;
-  bottom: 24px; right: 24px;
+  bottom: 86px; right: 24px;
   z-index: 2000;
   display: flex;
   flex-direction: column;
