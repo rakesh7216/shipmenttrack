@@ -6,6 +6,7 @@ import { createRequire } from 'module';
 import authRoutes from './routes/auth.js';
 import shipmentRoutes from './routes/shipments.js';
 import analyticsRoutes from './routes/analytics.js';
+import chatRoutes from './routes/chat.js';
 import { initWebSocket } from './websocket.js';
 import { startMockCarrierStream } from './mockCarrier.js';
 import { ingestEvent } from './ingestion.js';
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/shipments', shipmentRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/chat', chatRoutes);
 
 // Public tracking (no auth)
 app.get('/api/tracking/:trackingNumber', (req, res) => {

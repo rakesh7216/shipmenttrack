@@ -6,6 +6,7 @@ import { renderAnalytics } from './pages/analytics.js';
 import { renderNotifications } from './pages/notifications.js';
 import { renderPublicTracking } from './pages/public-tracking.js';
 import { renderProfile } from './pages/profile.js';
+import { initChatbot } from './chatbot.js';
 
 // ── State ──────────────────────────────────────────────────────────────────
 export let currentUser = null;
@@ -164,6 +165,7 @@ async function router() {
 // ── Boot ───────────────────────────────────────────────────────────────────
 loadStoredUser();
 connectWs();
+initChatbot();
 
 window.addEventListener('hashchange', () => router());
 

@@ -46,8 +46,12 @@ export const api = {
   notifLog: ()               => req('GET',  '/shipments/notifications/log'),
 
   // Analytics
+  // Analytics
   analyticsSummary: ()       => req('GET',  '/analytics/summary'),
   carrierSla:       ()       => req('GET',  '/analytics/carrier-sla'),
   volume:           ()       => req('GET',  '/analytics/volume'),
   routes:           ()       => req('GET',  '/analytics/routes'),
+
+  // Chatbot
+  chat:             (message)=> req('POST', '/chat', { message }),
 };
