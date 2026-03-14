@@ -174,6 +174,18 @@ export async function renderTracking(container, shipmentId) {
     zoomControl: true,
   });
 
+  const bounds = L.latLngBounds([
+    [ship.origin.lat, ship.origin.lng],
+    [ship.destination.lat, ship.destination.lng],
+    [ship.currentPosition.lat, ship.currentPosition.lng]
+  ]);
+  
+  if (ship.routeWaypoints?.length) {
+    ship.routeWaypoints.forEach(w => bounds.extend([w[0], w[1]]));
+  }
+  
+  map.fitBounds(bounds, { padding: [50, 50] });
+
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '© OpenStreetMap © CARTO',
     subdomains: 'abcd', maxZoom: 19,
